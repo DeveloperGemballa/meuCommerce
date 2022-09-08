@@ -21,7 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="?pagina=paginas/home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
@@ -53,28 +53,31 @@
         <?php
         include_once "lib/conexao.php";
         $sql = "SELECT *
-                FROM categorias 
-                where categoria_pai = NULL";
+                FROM categorias ";
         $consulta = $conn->prepare($sql);
         $resultado = $consulta->execute();
         ?>
+
+        <?php if (
+          isset($_GET["pagina"]) &&
+          $_GET["pagina"] != "paginas/consultaProduto"
+        ) { ?>
         <div style="position:relative;float:left;width:130px;height:50vh;margin:2px;">
             <div class="card">
-                <div class="card-header">Categorias</div>
                 <div>
                     <?php while ($linha = $consulta->fetch()) { ?>
-                    <strong> &nbsp;<?php $linha["descricao"]; ?></strong>
+                    <strong> &nbsp;
+                        <?php if (empty($linha["categoria_pai"])) {
+                          echo "</strong><div class='card-header'>" .
+                            $linha["descricao"] .
+                            "</div>";
+                        } elseif ($linha["categoria_pai"] != "NULL") {
+                          echo "<a href='#' class='btn float-right' style='font-size:12px;'>• " .
+                            $linha["descricao"] .
+                            "</a>";
+                        }} ?>
+                    </strong>
                     <?php } ?>
-                    <br>
-                    <strong> &nbsp;Eletrônicos</strong>
-                    <a href="#" class="btn" style="font-size:12px;">• Celulares</a>
-                    <a href="#" class="btn" style="font-size:12px;">• Tv e vídeo</a>
-                </div>
-                <div>
-                    <br>
-                    <strong> &nbsp;Casa</strong>
-                    <a href="#" class="btn" style="font-size:12px;">• Eletrodosméticos</a>
-                    <a href="#" class="btn" style="font-size:12px;">• Móveis</a>
                 </div>
             </div>
         </div>
