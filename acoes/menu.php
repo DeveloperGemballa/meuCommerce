@@ -24,11 +24,11 @@
                             <a class="nav-link active" aria-current="page" href="?pagina=paginas/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link disabled" href="#">Link</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle disabled" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown
                             </a>
                             <ul class="dropdown-menu">
@@ -41,7 +41,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
+                    <form class="d-flex" role="search" action="procuraprodutos.php" method="POST">
                         <input class="form-control me-2 shadow-sm" type="search" placeholder="Procurar"
                             aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Procurar</button>
@@ -62,23 +62,23 @@
           isset($_GET["pagina"]) &&
           $_GET["pagina"] != "paginas/consultaProduto"
         ) { ?>
-        <div style="position:relative;float:left;width:130px;height:50vh;margin:2px;">
+        <div style="position:relative;float:left;width:125px;margin:2px;">
             <div class="card">
-                <div>
-                    <?php while ($linha = $consulta->fetch()) { ?>
-                    <strong> &nbsp;
-                        <?php if (empty($linha["categoria_pai"])) {
-                          echo "</strong><div class='card-header'>" .
-                            $linha["descricao"] .
-                            "</div>";
-                        } elseif ($linha["categoria_pai"] != "NULL") {
-                          echo "<a href='#' class='btn float-right' style='font-size:12px;'>• " .
-                            $linha["descricao"] .
-                            "</a>";
-                        }} ?>
-                    </strong>
-                    <?php } ?>
-                </div>
+                <?php while ($linha = $consulta->fetch()) { ?>
+                <strong>
+                    <?php if (empty($linha["categoria_pai"])) {
+                      echo "<div class='card-header text-start bg-secondary bg-gradient' style='font-size:15px;'><p>" .
+                        $linha["descricao"] .
+                        "</p></div>";
+                    } elseif ($linha["categoria_pai"] != "NULL") {
+                      echo "<a href='?pagina=paginas/home&numeroid=" .
+                        $linha["id"] .
+                        "' class='btn float-right text-start' style='font-size:12px;'>• " .
+                        $linha["descricao"] .
+                        "</a>";
+                    }} ?>
+                </strong>
+                <?php } ?>
             </div>
         </div>
     </body>

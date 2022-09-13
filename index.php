@@ -17,6 +17,8 @@
     include "acoes/menu.php";
     if (isset($_GET["pagina"])) {
       include $_GET["pagina"] . ".php";
+    } elseif (!isset($_GET["pagina"])) {
+      include "paginas/inicio.php";
     } else {
       include "paginas/paginaEmBranco.php";
     }
