@@ -12,6 +12,33 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
         </script>
+        <style>
+        body {
+            animation: changeBg 5s infinite alternate linear;
+        }
+
+        @keyframes changeBg {
+            0% {
+                background: #ee6055;
+            }
+
+            25% {
+                background: #60d394;
+            }
+
+            50% {
+                background: #aaf683;
+            }
+
+            75% {
+                background: #ffd97d;
+            }
+
+            100% {
+                background: #ff9b85;
+            }
+        }
+        </style>
     </head>
     <?php
     include "acoes/menu.php";

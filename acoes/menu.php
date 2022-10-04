@@ -62,7 +62,7 @@
           isset($_GET["pagina"]) &&
           $_GET["pagina"] != "paginas/consultaProduto"
         ) { ?>
-        <div style="position:relative;float:left;width:125px;margin:2px;">
+        <div style="position:absolute;float:left;width:125px;margin:2px;top:0px;">
             <div class="card">
                 <?php while ($linha = $consulta->fetch()) { ?>
                 <strong>
@@ -73,7 +73,7 @@
                     } elseif ($linha["categoria_pai"] != "NULL") {
                       echo "<a href='?pagina=paginas/home&numeroid=" .
                         $linha["id"] .
-                        "' class='btn float-right text-start' style='font-size:12px;'>• " .
+                        "' class='btn float-right text-start bg-body' style='font-size:12px;'>• " .
                         $linha["descricao"] .
                         "</a>";
                     }} ?>

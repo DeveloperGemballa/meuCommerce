@@ -7,14 +7,15 @@ $consulta = $conn->prepare($sql_produtobusca);
 $resultado = $consulta->execute();
 
 while ($linha = $consulta->fetch()) { ?>
-<table class="table table-striped table-bordered container">
+<table class="table table-striped table-bordered container bg-light" border="5">
     <th class=" text-center"><img src="img/<?php echo $linha[
       "imagem"
-    ]; ?>" class="img-fluid img-thumbnail" style="width:350px;height:350px;"></th>
+    ]; ?>" class="img-fluid img-thumbnail bg-light" style="width:350px;height:350px;"></th>
     <tr>
-        <td class=" text-center"><strong><?php echo $linha[
+        <td class=" text-center bg-light"><strong><?php echo $linha[
           "descricao"
-        ]; ?></strong></td>
+        ]; ?></strong> &nbsp;&nbsp;&nbsp;<a href="#" class="btn bg-info"><img src="img/compra.png"
+                    style="width:20px;height:20px;"></a></td>
     </tr>
     <tr>
         <td><strong>Código produto:</strong> <?php echo $linha[
