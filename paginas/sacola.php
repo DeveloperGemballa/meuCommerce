@@ -4,7 +4,6 @@ if(isset($_POST['limpar_sacola']))
     unset($_SESSION['sacola']);
 }
 if (isset($_SESSION['sacola'])) { ?>
-
 <form method="post" class="container">
     <input class="btn btn-danger" type="submit" name="limpar_sacola" value="Limpar sacola">
 </form>
