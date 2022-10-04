@@ -33,7 +33,6 @@
                 <a href="?pagina=paginas/consultaProduto&codigo=<?php echo $linhaconsultaproduto[
                   "id"
                 ]; ?>" class="btn btn-primary shadow">Detalhes</a>
-                <a href="#" class="btn bg-info shadow"><img src="img/compra.png" style="width:20px;height:20px;"></a>
             </div>
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php } ?>

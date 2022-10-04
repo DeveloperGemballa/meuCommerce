@@ -24,7 +24,7 @@
                             <a class="nav-link active" aria-current="page" href="?pagina=paginas/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Link</a>
+                            <a class="nav-link" href="?pagina=paginas/sacola">Ver carrinho</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle disabled" href="#" role="button"

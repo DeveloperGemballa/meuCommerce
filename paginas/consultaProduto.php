@@ -1,3 +1,4 @@
+<script src="js/jquery-3.6.1.min.js"></script>
 <?php
 include_once "lib/conexao.php";
 $sql_produtobusca =
@@ -14,8 +15,22 @@ while ($linha = $consulta->fetch()) { ?>
     <tr>
         <td class=" text-center bg-light"><strong><?php echo $linha[
           "descricao"
-        ]; ?></strong> &nbsp;&nbsp;&nbsp;<a href="#" class="btn bg-info"><img src="img/compra.png"
-                    style="width:20px;height:20px;"></a></td>
+        ]; ?></strong> &nbsp;&nbsp;&nbsp;<button class="sacola btn bg-info"><img src="img/compra.png"
+                    style="width:20px;height:20px;"></button></td>
+            <script>
+            $(".sacola").click(function() {
+                $.post("", {
+                    "adicionarNaSacola": true
+                }, function(data, status) {
+                    Swal.fire({
+                        title: 'Sucesso!',
+                        text: 'Seu produto foi adicionado a sacola',
+                        icon: 'success',
+                        confirmButtonText: 'ok'
+                    })
+                });
+            });
+            </script>
     </tr>
     <tr>
         <td><strong>Código produto:</strong> <?php echo $linha[
